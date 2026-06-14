@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="soLAWtion AI — 모욕죄·명예훼손·통신매체이용음란죄 판례 검색 서비스">
+  <meta name="keywords" content="모욕죄, 명예훼손, 통신매체이용음란죄, 판례 검색, 법률 AI, 사이버 명예훼손">
+  <meta name="author" content="soLAWtion AI">
+  <meta property="og:title" content="soLAWtion — 판례 검색 서비스">
+  <meta property="og:description" content="모욕죄·명예훼손·통신매체이용음란죄 관련 판례를 편리하게 찾아드립니다.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>soLAWtion — 판례 검색 서비스</title>
+
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- Google Fonts: Lora + Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="templatemo-frost-style.css">
+
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<!--
+
+TemplateMo 613 Frost Bakery
+
+https://templatemo.com/tm-613-frost-bakery
+
+-->
+</head>
+<body>
+
+  <!-- ==========================================
+       Mobile Hamburger Button
+       ========================================== -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+    <div class="hamburger__lines">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- Mobile Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ==========================================
+       Sidebar Navigation
+       ========================================== -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">so<span>LAW</span>tion AI</div>
+      <div class="sidebar__tagline">법률 서비스 제공 AI</div>
+    </div>
+
+    <nav class="sidebar__nav">
+      <ul>
+        <li><a href="#hero" class="active"><span class="nav-icon">&#9678;</span> 홈</a></li>
+        <li><a href="#seasonal"><span class="nav-icon">&#10053;</span> 판례 검색</a></li>
+        <li><a href="#loyalty"><span class="nav-icon">&#10084;</span> 서비스 안내</a></li>
+        <li><a href="#flavors"><span class="nav-icon">&#10047;</span> 모욕죄</a></li>
+        <li><a href="#builder"><span class="nav-icon">&#9733;</span> 명예훼손죄</a></li>
+        <li><a href="#catering"><span class="nav-icon">&#9738;</span> 통신매체이용음란죄</a></li>
+        <li><a href="#form-section"><span class="nav-icon">&#9993;</span> 출시 알림 신청</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="sidebar__hours">
+        <strong>soLAWtion AI</strong><br>
+        AI 판례 검색 서비스<br>
+        베타 서비스 준비 중
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       Main Content
+       ========================================== -->
+  <main class="main">
+
+    <!-- ======= HERO ======= -->
+    <section class="hero" id="hero">
+      <div class="hero__content">
+        <div class="hero__badge reveal">Home</div>
+        <h1 class="hero__title reveal reveal-delay-1">
+        soLAWtion AI<br><em>모욕, 명예훼손, 통신매체이용음란</em>
+        </h1>
+        <p class="hero__subtitle reveal reveal-delay-2">
+          법률 서비스 제공 AI
+        </p>
+        <div class="hero__actions reveal reveal-delay-3">
+          <a href="#seasonal" class="btn btn--outline">판례 검색하기</a>
+          <a href="#flavors" class="btn btn--outline">죄목 알아보기</a>
+        </div>
+        <p class="reveal reveal-delay-4" style="margin-top:1.8rem; font-size:0.95rem; color:var(--navy-light); line-height:1.75;">
+          법은 잘 모르는데 변호사 상담은 부담스러우신가요?<br>
+          <strong style="color:var(--navy);">언제 어디서든 무료로 도움을 받아보세요!</strong>
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ======= AI 판례 검색 ======= -->
+    <section class="section" id="seasonal">
+      <div class="section__header reveal">
+        <span class="section__label">AI 판례 검색</span>
+        <h2 class="section__title">판례를 직접 찾아드립니다.</h2>
+        <p class="section__desc">키워드를 통한 판례 검색. 아래에서 원하시는 유형을 선택하세요.</p>
+      </div>
+
+      <!-- Season Tabs → 죄목 탭 -->
+      <div class="seasonal-tabs reveal" role="tablist">
+        <button class="seasonal-tab is-active" data-season="spring" role="tab" aria-selected="true" aria-controls="panel-spring">
+          <span class="seasonal-tab__icon" aria-hidden="true">💬</span> 모욕죄
+        </button>
+        <button class="seasonal-tab" data-season="summer" role="tab" aria-selected="false" aria-controls="panel-summer">
+          <span class="seasonal-tab__icon" aria-hidden="true">📰</span> 명예훼손죄
+        </button>
+        <button class="seasonal-tab" data-season="autumn" role="tab" aria-selected="false" aria-controls="panel-autumn">
+          <span class="seasonal-tab__icon" aria-hidden="true">📱</span> 통신매체이용음란죄
+        </button>
+        <button class="seasonal-tab" data-season="winter" role="tab" aria-selected="false" aria-controls="panel-winter">
+          <span class="seasonal-tab__icon" aria-hidden="true">🔍</span> 전체 검색
+        </button>
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="seasonal-panels reveal">
+
+        <!-- 모욕죄 판례 패널 -->
+        <div class="seasonal-panel is-active" id="panel-spring" role="tabpanel">
+          <div class="seasonal-panel__visual" style="background:#f4f4f4; display:flex; align-items:center; justify-content:center; font-size:4rem;">
+            💬
+            <span class="seasonal-panel__badge">모욕죄 판례</span>
+          </div>
+          <div class="seasonal-panel__details">
+            <span class="seasonal-panel__season-label">모욕죄 주요 판례</span>
+            <h3 class="seasonal-panel__name">대법원 2015도2229</h3>
+            <p class="seasonal-panel__desc">단체 카카오톡 채팅방에서의 발언도 공연성이 인정된다. 참여자 중 불특정 다수에게 전파될 가능성이 있으면 공연성 요건을 충족한다고 판시하였다.</p>
+            <div class="seasonal-panel__meta">
+              <span class="seasonal-panel__meta-tag">대법원</span>
+              <span class="seasonal-panel__meta-tag">2015년</span>
+              <span class="seasonal-panel__meta-tag">유죄</span>
+            </div>
+            <a href="#form-section" class="btn btn--primary seasonal-panel__cta">서비스 출시 알림 신청</a>
+          </div>
+        </div>
+
+        <!-- 명예훼손 판례 패널 -->
+        <div class="seasonal-panel" id="panel-summer" role="tabpanel">
+          <div class="seasonal-panel__visual" style="background:#f4f4f4; display:flex; align-items:center; justify-content:center; font-size:4rem;">
+            📰
+            <span class="seasonal-panel__badge">명예훼손 판례</span>
+          </div>
+          <div class="seasonal-panel__details">
+            <span class="seasonal-panel__season-label">명예훼손 주요 판례</span>
+            <h3 class="seasonal-panel__name">대법원 2020도5813</h3>
+            <p class="seasonal-panel__desc">SNS에 사실을 게시하더라도 비방의 목적이 인정되면 정보통신망법상 명예훼손죄가 성립한다. 공익적 목적 여부는 게시 맥락 전체를 고려하여 판단한다.</p>
+            <div class="seasonal-panel__meta">
+              <span class="seasonal-panel__meta-tag">대법원</span>
+              <span class="seasonal-panel__meta-tag">2020년</span>
+              <span class="seasonal-panel__meta-tag">유죄</span>
+            </div>
+            <a href="#form-section" class="btn btn--primary seasonal-panel__cta">서비스 출시 알림 신청</a>
+          </div>
+        </div>
+
+        <!-- 통신매체이용음란죄 판례 패널 -->
+        <div class="seasonal-panel" id="panel-autumn" role="tabpanel">
+          <div class="seasonal-panel__visual" style="background:#f4f4f4; display:flex; align-items:center; justify-content:center; font-size:4rem;">
+            📱
+            <span class="seasonal-panel__badge">통신매체이용음란 판례</span>
+          </div>
+          <div class="seasonal-panel__details">
+            <span class="seasonal-panel__season-label">통신매체이용음란죄 주요 판례</span>
+            <h3 class="seasonal-panel__name">대법원 2017도12537</h3>
+            <p class="seasonal-panel__desc">피해자가 원하지 않는 성적 메시지를 반복 전송한 경우 통신매체이용음란죄가 성립한다. 메시지 횟수보다 수신자의 성적 수치심 유발 여부가 핵심 기준이다.</p>
+            <div class="seasonal-panel__meta">
+              <span class="seasonal-panel__meta-tag">대법원</span>
+              <span class="seasonal-panel__meta-tag">2017년</span>
+              <span class="seasonal-panel__meta-tag">유죄</span>
+            </div>
+            <a href="#form-section" class="btn btn--primary seasonal-panel__cta">서비스 출시 알림 신청</a>
+          </div>
+        </div>
+
+        <!-- 전체 검색 패널 → AI 분석 -->
+        <div class="seasonal-panel" id="panel-winter" role="tabpanel">
+          <div class="seasonal-panel__visual" style="background:#f4f4f4; display:flex; align-items:center; justify-content:center; font-size:4rem;">
+            🔍
+            <span class="seasonal-panel__badge">AI 통합 분석</span>
+          </div>
+          <div class="seasonal-panel__details" style="flex:1;">
+            <span class="seasonal-panel__season-label">AI 판례 분석</span>
+            <h3 class="seasonal-panel__name">상황을 설명하면 AI가 판례를 찾아드립니다</h3>
+
+            <!-- 죄목 선택 -->
+            <div style="margin-bottom:12px;">
+              <label style="font-size:0.85rem; font-weight:600; color:var(--navy);">죄목 선택</label>
+              <select id="ai-crime-type" style="width:100%; margin-top:6px; padding:10px; border:1px solid #ddd; border-radius:8px; font-size:0.9rem;">
+                <option value="모욕죄">💬 모욕죄</option>
+                <option value="명예훼손">📰 명예훼손</option>
+                <option value="통신매체이용음란죄">📱 통신매체이용음란죄</option>
+              </select>
+            </div>
+
+            <!-- 상황 입력 -->
+            <div style="margin-bottom:12px;">
+              <label style="font-size:0.85rem; font-weight:600; color:var(--navy);">상황 설명</label>
+              <textarea id="ai-situation" rows="3" placeholder="예: 카카오톡 단톡방에서 제 외모를 비하하는 욕설을 들었습니다."
+                style="width:100%; margin-top:6px; padding:10px; border:1px solid #ddd; border-radius:8px; font-size:0.9rem; resize:none;"></textarea>
+            </div>
+
+            <button id="ai-analyze-btn" onclick="analyzeWithAI()"
+              style="width:100%; padding:12px; background:var(--navy); color:#fff; border:none; border-radius:10px; font-weight:600; cursor:pointer; font-size:0.95rem;">
+              🔍 AI 판례 분석하기
+            </button>
+
+            <!-- 결과 영역 -->
+            <div id="ai-result" style="display:none; margin-top:20px;">
+              <!-- 참조 판례 -->
+              <div id="ai-prec-list" style="margin-bottom:14px;"></div>
+              <!-- Gemini 분석 -->
+              <div id="ai-analysis-text"
+                style="background:#f9f9f9; border:1px solid #eee; border-radius:10px; padding:16px; font-size:0.88rem; line-height:1.75; white-space:pre-wrap; color:#333;"></div>
+            </div>
+
+            <div id="ai-loading" style="display:none; margin-top:16px; text-align:center; color:#888; font-size:0.9rem;">
+              ⏳ 판례 분석 중입니다...
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======= 서비스 안내 ======= -->
+   <section class="section section--alt loyalty" id="loyalty">
+  <div class="section__header reveal">
+    <span class="section__label">Service Guide</span>
+    <h2 class="section__title">soLAWtion AI가 제공하는 기능들</h2>
+    <p class="section__desc">곧 출시될 soLAWtion AI의 주요 기능들을 미리 확인하세요!</p>
+  </div>
+
+  <div class="loyalty__layout" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
+    
+    <div class="loyalty__info reveal">
+      <div class="loyalty__perks" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="perk" style="display: flex; gap: 15px; align-items: flex-start;">
+          <div class="perk__icon" style="background: var(--sage); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;">✓</div>
+          <p class="perk__text" style="margin: 0;"><strong style="color: var(--navy);">AI 판례 검색:</strong> 키워드나 상황 설명만으로 관련 판례를 자동으로 찾아드립니다.</p>
+        </div>
+        <div class="perk" style="display: flex; gap: 15px; align-items: flex-start;">
+          <div class="perk__icon" style="background: var(--sage); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;">✓</div>
+          <p class="perk__text" style="margin: 0;"><strong style="color: var(--navy);">죄목별 요건 분석:</strong> 모욕죄·명예훼손·통신매체이용음란죄의 성립 요건을 쉽게 설명해드립니다.</p>
+        </div>
+        <div class="perk" style="display: flex; gap: 15px; align-items: flex-start;">
+          <div class="perk__icon" style="background: var(--sage); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;">✓</div>
+          <p class="perk__text" style="margin: 0;"><strong style="color: var(--navy);">판례 유사도 분석:</strong> 내 상황과 유사한 판례를 AI가 분석하여 결과를 예측합니다.</p>
+        </div>
+       <div class="perk" style="display: flex; gap: 15px; align-items: flex-start;">
+          <div class="perk__icon" style="background: var(--sage); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;">✓</div>
+          <p class="perk__text" style="margin: 0;"><strong style="color: var(--navy);">Add Later</strong> 이후에 추가될 기능들도 기대해주세요!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="loyalty__image reveal reveal-delay-1" style="position: relative;">
+      <div style="border-radius: var(--radius-lg); box-shadow: var(--shadow-hover); border: 1px solid rgba(0,0,0,0.07); overflow: hidden;">
+
+        <!-- 채팅 헤더 -->
+        <div style="background: var(--terracotta); padding: 13px 18px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.6);"></div>
+          <span style="color: #fff; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.03em;">soLAWtion AI</span>
+          <span style="margin-left: auto; background: rgba(255,255,255,0.22); color: #fff; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.04em;">Coming Soon</span>
+        </div>
+
+        <!-- 대화 영역 -->
+        <div style="background: #f9f9f9; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px;">
+
+          <!-- Q1 사용자 -->
+          <div style="display: flex; justify-content: flex-end;">
+            <div style="max-width: 78%; background: var(--terracotta); color: #fff; padding: 10px 14px; border-radius: 16px 16px 4px 16px; font-size: 0.82rem; line-height: 1.55;">
+              회사 내 SNS에서 제 인상착의가 언급되며 모욕적인 발언을 들었는데, 특정성이 성립할까요?
+            </div>
+          </div>
+
+          <!-- A1 AI -->
+          <div style="display: flex; gap: 8px; align-items: flex-start;">
+            <div style="width: 26px; height: 26px; border-radius: 50%; background: var(--terracotta); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.68rem; color: #fff; font-weight: 800;">AI</div>
+            <div style="background: #fff; border: 1px solid #e8e8e8; padding: 10px 14px; border-radius: 4px 16px 16px 16px; font-size: 0.82rem; line-height: 1.6; color: #333;">
+              <strong style="color: var(--terracotta); display: block; margin-bottom: 3px;">대법원 20xx도xxxx</strong>
+              유사한 상황이 있습니다. 맥락 상 본인임을 제 3자가 인식할 수 있다고 판결하였고, 전파 가능성도 충분해 공연성도 성립한다고 하였습니다.
+            </div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid #e8e8e8; margin: 2px 0;">
+
+          <!-- Q2 사용자 -->
+          <div style="display: flex; justify-content: flex-end;">
+            <div style="max-width: 78%; background: var(--terracotta); color: #fff; padding: 10px 14px; border-radius: 16px 16px 4px 16px; font-size: 0.82rem; line-height: 1.55;">
+              게임 중에 xxx 라는 닉네임의 유저에게 욕설을 했는데 고소 당할 수 있나요?
+            </div>
+          </div>
+
+          <!-- A2 AI -->
+          <div style="display: flex; gap: 8px; align-items: flex-start;">
+            <div style="width: 26px; height: 26px; border-radius: 50%; background: var(--terracotta); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.68rem; color: #fff; font-weight: 800;">AI</div>
+            <div style="background: #fff; border: 1px solid #e8e8e8; padding: 10px 14px; border-radius: 4px 16px 16px 16px; font-size: 0.82rem; line-height: 1.6; color: #333;">
+              유사한 판례들을 찾아 요약해드리겠습니다.<br>
+              <span style="display: inline-block; margin-top: 6px; background: #f3f3f3; border-radius: 6px; padding: 5px 10px; font-size: 0.77rem; color: #555;">📄 대법원 2016도18024 — 게임 내 채팅 모욕 유죄</span><br>
+              <span style="display: inline-block; margin-top: 4px; background: #f3f3f3; border-radius: 6px; padding: 5px 10px; font-size: 0.77rem; color: #555;">📄 서울중앙지법 2019고단3871 — 닉네임 특정성 인정</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+   <!-- ======= 모욕죄 ======= -->
+<section class="section section--alt" id="flavors">
+  <div class="section__header reveal">
+    <span class="section__label">#1</span>
+    <h2 class="section__title">모욕죄란?</h2>
+    <p class="section__desc">
+      형법 제311조 : 공연히 사람을 모욕하는 행위
+    </p>
+  </div>
+
+  <div class="requirements-container"
+       style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:16px; margin-bottom:12px;">
+
+    <div class="requirement-card reveal">
+      <div class="flavor-card__tag">성립 요건 01</div>
+      <div class="flavor-card__info">
+        <span class="flavor-card__type">Publicity</span>
+        <h3 class="flavor-card__name">공연성</h3>
+        <p class="flavor-card__desc">불특정 또는 다수가 인식 가능한 상태를 말한다. (전파 가능성이 중요하다)</p>
+        <div class="example-box">
+          <strong>사례:</strong> 단톡방, 커뮤니티, SNS 댓글
+        </div>
+      </div>
+    </div>
+
+    <div class="requirement-card reveal">
+      <div class="flavor-card__tag">성립 요건 02</div>
+      <div class="flavor-card__info">
+        <span class="flavor-card__type">Identification</span>
+        <h3 class="flavor-card__name">특정성</h3>
+        <p class="flavor-card__desc">이름이 언급되지 않더라도 상황상 특정 개인이 지목될 수 있음을 말한다.</p>
+        <div class="example-box">
+          <strong>사례:</strong> 실명, 사진, 직업 노출
+        </div>
+      </div>
+    </div>
+
+    <div class="requirement-card reveal">
+      <div class="flavor-card__tag">성립 요건 03</div>
+      <div class="flavor-card__info">
+        <span class="flavor-card__type">Insult</span>
+        <h3 class="flavor-card__name">모욕성</h3>
+        <p class="flavor-card__desc">사람의 사회적 평가를 저하시킬 만한 추상적 판단이나 경멸적 표현을 뜻한다.</p>
+        <div class="example-box">
+          <strong>사례:</strong> 욕설, 외모 비하
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="requirement-card reveal" style="max-width: 100%;">
+  <div class="flavor-card__tag" style="background: var(--navy);">Punishment</div>
+  <div class="flavor-card__info" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+    
+    <div class="requirement-icon" style="margin-bottom: 0;">⚖️</div>
+
+    <div style="flex: 1; min-width: 250px;">
+      <h3 class="flavor-card__name">처벌 수위 및 특징</h3>
+      <p class="flavor-card__desc" style="-webkit-line-clamp: unset; line-clamp: unset;">
+        1년 이하의 징역 또는 200만 원 이하의 벌금<br>
+        <strong>친고죄</strong>로 피해자의 고소가 있어야 처벌됩니다.
+      </p>
+    </div>
+
+    <div class="punishment-tags" style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <span style="background:#eee; padding:5px 12px; border-radius:20px; font-size:0.8rem; font-weight:bold; color:var(--navy);">
+        #징역_최대1년
+      </span>
+      <span style="background:#eee; padding:5px 12px; border-radius:20px; font-size:0.8rem; font-weight:bold; color:var(--navy);">
+        #벌금_200만
+      </span>
+      <span style="background:#eee; padding:5px 12px; border-radius:20px; font-size:0.8rem; font-weight:bold; color:var(--terracotta);">
+        #친고죄
+      </span>
+    </div>
+
+  </div>
+</div>
+  
+</section>
+
+
+    <!-- ======= (사이버) 명예훼손죄 ======= -->
+<section class="section" id="builder">
+  <div class="section__header reveal">
+    <span class="section__label">#2</span>
+    <h2 class="section__title">(사이버) 명예훼손죄란?</h2>
+    <p class="section__desc">
+      정보통신망법 제70조 : 공연히 사실 또는 허위 사실을 통해 명예를 훼손하는 행위
+    </p>
+  </div>
+
+  <div class="requirements-container"
+       style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:16px; margin-bottom:12px;">
+
+    <div class="requirement-card reveal">
+      <div class="flavor-card__tag">성립 요건 01</div>
+      <div class="flavor-card__info">
+        <span class="flavor-card__type">Anything</span>
+        <h3 class="flavor-card__name">명예훼손적 표현</h3>
+        <p class="flavor-card__desc">사실 / 허위 사실 적시 모두 포함하며 사회적 평가를 떨어뜨릴 내용이어야 한다.</p>
+        <div class="example-box">
+          <strong>사례:</strong> 과거 행위 폭로 글, 악성 허위 사실 유포
+        </div>
+      </div>
+    </div>
+
+    <div class="requirement-card reveal">
+      <div class="flavor-card__tag">성립 요건 02</div>
+      <div class="flavor-card__info">
+        <span class="flavor-card__type">Intent</span>
+        <h3 class="flavor-card__name">비방 목적</h3>
+        <p class="flavor-card__desc">상대방의 사회적 평가를 떨어뜨릴 의도가 있어야 한다.</p>
+        <div class="example-box">
+          <strong>사례:</strong> 익명 게시판 폭로
+        </div>
+      </div>
+    </div>
+
+    <div class="requirement-card reveal">
+      <div class="flavor-card__tag">성립 요건 03</div>
+      <div class="flavor-card__info">
+        <span class="flavor-card__type">Publicity</span>
+        <h3 class="flavor-card__name">공연성·특정성</h3>
+        <p class="flavor-card__desc">다수가 인식 + 대상 특정 가능해야 한다.</p>
+        <div class="example-box">
+          <strong>사례:</strong> SNS 상에서 특정인을 향한 모욕
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="requirement-card reveal" style="max-width: 100%;">
+  <div class="flavor-card__tag" style="background: var(--navy);">Punishment</div>
+  <div class="flavor-card__info" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+    
+    <div class="requirement-icon" style="margin-bottom: 0;">⚖️</div>
+
+    <div style="flex: 1; min-width: 250px;">
+      <h3 class="flavor-card__name">처벌 수위 및 특징</h3>
+      <p class="flavor-card__desc" style="-webkit-line-clamp: unset; line-clamp: unset;">
+        사실 적시: 3년 이하 징역 또는 2000만 원 이하 벌금<br>
+        허위 사실: 7년 이하 징역 또는 5000만 원 이하 벌금<br>
+        <strong>반의사불벌죄</strong>입니다.
+      </p>
+    </div>
+
+    <div class="punishment-tags" style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <span style="background:#eee; padding:5px 12px; border-radius:20px; font-size:0.8rem; font-weight:bold; color:var(--navy);">
+        #사실_3년
+      </span>
+      <span style="background:#eee; padding:5px 12px; border-radius:20px; font-size:0.8rem; font-weight:bold; color:var(--navy);">
+        #허위_7년
+      </span>
+      <span style="background:#eee; padding:5px 12px; border-radius:20px; font-size:0.8rem; font-weight:bold; color:var(--navy);">
+        #벌금_최대5000만
+      </span>
+      <span style="background:#eee; padding:5px 12px; border-radius:20px; font-size:0.8rem; font-weight:bold; color:var(--terracotta);">
+        #반의사불벌죄
+      </span>
+    </div>
+
+  </div>
+</div>
+  
+</section>
+
+    <!-- ======= 통신매체이용음란죄 ======= -->
+    <section class="section section--alt" id="catering">
+  <div class="section__header reveal">
+    <span class="section__label">#3</span>
+    <h2 class="section__title">통신매체이용음란죄란?</h2>
+    <p class="section__desc">성폭력처벌법 제13조 : 자기 또는 타인의 성적 욕망을 유발하거나 만족시킬 목적으로 통신매체를 통해 성적 수치심을 주는 행위</p>
+  </div>
+
+  <div class="requirements-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 30px;">
+    
+    <div class="requirement-card reveal">
+      <div class="flavor-card__tag" style="background: var(--terracotta);">성립 요건 01</div>
+      <div class="flavor-card__info">
+        <span class="flavor-card__type">Purpose</span>
+        <h3 class="flavor-card__name">성적 목적</h3>
+        <p class="flavor-card__desc">자기 또는 타인의 성적 욕망을 유발하거나 만족시키기 위한 목적이어야 한다.</p>
+        <div class="example-box">
+          <strong>사례:</strong> 원치 않는 성적 사진 전송, 성적 발언 반복 등
+        </div>
+      </div>
+    </div>
+
+    <div class="requirement-card reveal reveal-delay-1">
+      <div class="flavor-card__tag" style="background: var(--terracotta);">성립 요건 02</div>
+      <div class="flavor-card__info">
+        <span class="flavor-card__type">Medium</span>
+        <h3 class="flavor-card__name">통신매체 이용</h3>
+        <p class="flavor-card__desc">전화, 문자, 카톡, SNS DM 등 모든 통신 수단을 이용한 경우에 성립한다.</p>
+        <div class="example-box">
+          <strong>사례:</strong> 1:1 채팅, 게임 내 귓속말, 메일 등
+        </div>
+      </div>
+    </div>
+
+    <div class="requirement-card reveal reveal-delay-2">
+      <div class="flavor-card__tag" style="background: var(--terracotta);">성립 요건 03</div>
+      <div class="flavor-card__info">
+        <span class="flavor-card__type">Effect</span>
+        <h3 class="flavor-card__name">수치심 유발</h3>
+        <p class="flavor-card__desc">상대방에게 성적 수치심이나 혐오감을 일으키는 내용이어야 한다.</p>
+        <div class="example-box">
+          <strong>사례:</strong> 주관적 수치심을 주는 글·그림·음성 등
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="requirement-card reveal" style="max-width: 100%;">
+    <div class="flavor-card__tag" style="background: var(--navy);">Punishment</div>
+    <div class="flavor-card__info" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <div class="requirement-icon" style="margin-bottom: 0;">⚖️</div>
+      <div style="flex: 1; min-width: 250px;">
+        <h3 class="flavor-card__name">처벌 수위 및 특징</h3>
+        <p class="flavor-card__desc" style="-webkit-line-clamp: unset; line-clamp: unset;">2년 이하의 징역 또는 2,000만 원 이하의 벌금에 처해집니다. 특히 <strong>비친고죄</strong>이므로 합의 여부와 상관없이 수사가 진행될 수 있습니다.</p>
+      </div>
+      <div class="punishment-tags" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <span style="background: #eee; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; color: var(--navy);">#징역_최대2년</span>
+        <span style="background: #eee; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; color: var(--navy);">#벌금_최대2000만</span>
+        <span style="background: #eee; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; color: var(--terracotta);">#비친고죄</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <script>
+      const BACKEND_URL = 'https://spelling-unengaged-slimness.ngrok-free.dev';
+
+      async function analyzeWithAI() {
+        const situation = document.getElementById('ai-situation').value.trim();
+        const crimeType = document.getElementById('ai-crime-type').value;
+
+        if (!situation) {
+          alert('상황을 입력해주세요.');
+          return;
+        }
+
+        document.getElementById('ai-loading').style.display = 'block';
+        document.getElementById('ai-result').style.display = 'none';
+        document.getElementById('ai-analyze-btn').disabled = true;
+
+        try {
+          const formData = new FormData();
+          formData.append('situation', situation);
+          formData.append('crime_type', crimeType);
+
+          const res = await axios.post(BACKEND_URL + '/analyze', formData, {
+             headers: {
+              'ngrok-skip-browser-warning': '1'
+            }
+          });
+          const data = res.data;
+
+          // 참조 판례 렌더링
+          const precHtml = data.precedents.map(p => `
+            <a href="${p.link}" target="_blank"
+              style="display:block; margin-bottom:8px; padding:10px 14px; background:#f0f4ff;
+                     border-radius:8px; font-size:0.82rem; color:var(--navy); text-decoration:none;">
+              📄 <strong>${p.court} ${p.case_number}</strong>
+              <span style="color:#888; margin-left:8px;">${p.date}</span>
+            </a>
+          `).join('');
+          document.getElementById('ai-prec-list').innerHTML = precHtml;
+
+          // Gemini 분석 결과 렌더링
+          document.getElementById('ai-analysis-text').textContent = data.analysis;
+          document.getElementById('ai-result').style.display = 'block';
+
+        } catch (e) {
+          alert('분석 중 오류가 발생했습니다. 백엔드 서버가 실행 중인지 확인해주세요.');
+          console.error(e);
+        } finally {
+          document.getElementById('ai-loading').style.display = 'none';
+          document.getElementById('ai-analyze-btn').disabled = false;
+        }
+      }
+    </script>
+
+    <script type="application/javascript">
+					var ip = "null";
+					function getIP(json) {
+					    console.log(json);
+					    try {
+							ip = json.ip;
+					    } catch (e) {
+							ip = 'unknown';
+					    }
+					    return;
+					}
+		</script>
+		<script type="application/javascript" src="https://jsonip.com?format=jsonp&callback=getIP"></script>
+
+
+    <script>
+
+       var mobile = 'desktop';
+				if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+					// true for mobile device
+					mobile = 'mobile';
+				}
+
+      	var queryString = location.search;
+				const urlParams = new URLSearchParams(queryString);
+				const utm = urlParams.get("utm")
+       
+        // Sam pading value to start with 0. eg: 01, 02, .. 09, 10, ..
+				function padValue(value) {
+					return (value < 10) ? "0" + value : value;
+				}
+
+				function getTimeStamp() {
+					const date = new Date();
+
+					const year = date.getFullYear();
+					const month = date.getMonth() + 1;
+					const day = date.getDate();
+					const hours = date.getHours();
+					const minutes = date.getMinutes();
+					const seconds = date.getSeconds();
+
+					const formattedDate = `${padValue(year)}-${padValue(month)}-${padValue(day)} ${padValue(hours)}:${padValue(minutes)}:${padValue(seconds)}`;
+
+					return formattedDate;
+				}
+
+        // 쿠키에서 값을 가져오는 함수
+				function getCookieValue(name) {
+					const value = "; " + document.cookie;
+					const parts = value.split("; " + name + "=");
+					if (parts.length === 2) {
+						return parts.pop().split(";").shift();
+					}
+				}
+
+				// 쿠키에 값을 저장하는 함수
+				function setCookieValue(name, value, days) {
+					let expires = "";
+					if (days) {
+						const date = new Date();
+						date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+						expires = "; expires=" + date.toUTCString();
+					}
+					document.cookie = name + "=" + (value || "") + expires + "; path=/";
+				}
+
+				function getUVfromCookie() {
+					// 6자리 임의의 문자열 생성
+					const hash = Math.random().toString(36).substring(2, 8).toUpperCase();
+					// 쿠키에서 기존 해시 값을 가져옴
+					const existingHash = getCookieValue("user");
+					// 기존 해시 값이 없으면, 새로운 해시 값을 쿠키에 저장
+					if (!existingHash) {
+						setCookieValue("user", hash, 180); // 쿠키 만료일은 6개월 
+						return hash;
+					} else {
+						// 기존 해시 값이 있으면, 기존 값을 반환
+						return existingHash;
+					}
+				}
+
+				/* 수정 payload data -> id:getUVfromCookie() */
+
+          var data = JSON.stringify(
+            {
+              "id": getUVfromCookie(),
+							"landingUrl": window.location.href, 
+							"ip": ip, 
+							"referer": document.referrer,
+							"time_stamp": getTimeStamp(), 
+							"utm": utm,
+							"device": mobile
+            }
+					);
+
+      $(document).ready(function () {
+
+          var addrScript = "https://script.google.com/macros/s/AKfycbzHJ6DLPPXQ5_5aMMJjYjrzP1o8mc0LyAn4OLDmGU8_L1tnut_xYiN6RxWsHjV_QYFM/exec"
+					console.log("Document Ready");
+
+					axios.get(addrScript+'?action=insert&table=visitors&data='+data)
+				    .then(response => {
+							console.log(JSON.stringify(response));
+						})
+						.catch(error => {
+							if (error.response) {
+								// 서버가 2xx 범위를 벗어난 상태 코드로 응답한 경우
+								console.log(error.response.data);
+								console.log(error.response.status);
+								console.log(error.response.headers);
+							} else if (error.request) {
+								// 요청이 전송되었지만 응답을 받지 못한 경우
+								console.log(error.request);
+							} else {
+								// 요청 설정 중에 오류가 발생한 경우
+								console.log('Error', error.message);
+							}
+							console.log(error.config);
+						});
+
+			$("#submit").on("click", function () {
+					const email = $("#submit-email").val();
+					const advice = $("#submit-advice").val();
+		    
+					function validateEmail(email) {
+					    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+					    return re.test(email);
+					}
+		    
+					if (email == '' || !validateEmail(email)) {
+					    alert("이메일이 유효하지 않아 알림을 드릴 수가 없습니다. ");
+					    return;
+					}
+		    
+					var finalData = JSON.stringify({
+					    "id": getUVfromCookie(),
+					    "email": email,
+					    "advice": advice
+					})
+		    
+					axios.get(addrScript +'?action=insert&table=tab_final&data=' + finalData)
+					    .then(response => {
+			      alert('감사합니다!');
+						$('#submit-email').val('');
+						$('#submit-advice').val('');
+					    })
+				    });
+    });
+
+    </script>
+  
+    <section class="section" id="form-section" style="padding-top: 60px;">
+  <div style="max-width: 600px; margin: 0 auto;">
+
+    <div style="
+      background:#fff;
+      border:1px solid #eee;
+      border-radius:16px;
+      padding:30px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    ">
+
+      <h3 style="margin-bottom:10px; color:var(--navy);">
+        서비스 출시 알림 신청
+      </h3>
+      <p style="font-size:0.9rem; color:#666; margin-bottom:25px;">
+        이메일을 남겨주시면 서비스 런칭 시 안내드립니다.
+      </p>
+
+      <!-- 이메일 -->
+      <div style="margin-bottom:20px;">
+        <label style="font-size:0.85rem; font-weight:600;">이메일</label>
+        <input id="submit-email" type="email" placeholder="example@email.com"
+          style="
+            width:100%;
+            padding:12px;
+            margin-top:6px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            font-size:0.9rem;
+          ">
+      </div>
+
+      <!-- 조언 -->
+      <div style="margin-bottom:20px;">
+        <label style="font-size:0.85rem; font-weight:600;">서비스 개선 의견</label>
+        <textarea id="submit-advice" rows="4" placeholder="서비스에 대한 조언을 자유롭게 남겨주세요"
+          style="
+            width:100%;
+            padding:12px;
+            margin-top:6px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            font-size:0.9rem;
+            resize:none;
+          "></textarea>
+      </div>
+
+      <!-- 버튼 -->
+      <button id="submit"
+        style="
+          width:100%;
+          padding:14px;
+          background:var(--navy);
+          color:#fff;
+          border:none;
+          border-radius:10px;
+          font-weight:600;
+          cursor:pointer;
+          transition:0.2s;
+        "
+        onmouseover="this.style.opacity=0.85"
+        onmouseout="this.style.opacity=1"
+      >
+        제출하기
+      </button>
+
+    </div>
+  </div>
+</section>
+    
+<!-- ======= FOOTER ======= -->
+    <footer class="footer">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand">so<span>LAW</span>tion AI</div>
+          <p class="footer__copy">빠르고 간단한 판례 검색 및 상황 분석</p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4>목차</h4>
+            <ul>
+              <li><a href="#flavors">모욕죄</a></li>
+              <li><a href="#builder">명예훼손죄</a></li>
+              <li><a href="#catering">통신매체이용음란죄</a></li>
+              <li><a href="#seasonal">판례 검색</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>서비스</h4>
+            <ul>
+              <li><a href="#">소개</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">개인정보처리방침</a></li>
+              <li><a href="#">문의</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>연락처</h4>
+            <ul>
+              <li><a href="#">인스타그램</a></li>
+              <li><a href="#">카카오톡 채널</a></li>
+              <li><a href="#">이메일 문의</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 soLAWtion AI. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </main>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="templatemo-frost-script.js"></script>
+</body>
+</html>
