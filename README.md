@@ -1,6 +1,9 @@
 # soLAWtion 
 
+https://swaisj.netlify.app/
+
 사용자가 피해 상황을 입력하면 유사 판례를 자동으로 검색하고, 로컬 LLM이 판례를 분석하여 법률 참고 정보를 제공합니다.
+
 
 ---
 
